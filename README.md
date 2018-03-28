@@ -1,7 +1,7 @@
 # Projeto2-DesAgil
 Projeto 2 de Desenvolvimento Colaborativo Ágil
 
-Integrantes:
+### Integrantes:
 
 -Vitor Satyro
 
@@ -11,7 +11,7 @@ Integrantes:
 
 -Pedro Azambuja
 
-Avaliação:
+### Avaliação:
 
 -Passar nos testes de fumaça: significa que suas classes não podem provocar exceções durante os testes.
 
