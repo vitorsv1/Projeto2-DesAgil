@@ -3,7 +3,6 @@ package br.pro.hashi.ensino.desagil.rafaelogic.model;
 public class NotGate extends Gate {
 	private NandGate nandgate;
 	
-	
 	public NotGate() {
 		//Criando objeto da classe NandGate
 		nandgate = new NandGate();
