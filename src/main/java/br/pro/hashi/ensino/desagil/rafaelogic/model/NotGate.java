@@ -7,6 +7,7 @@ public class NotGate extends Gate {
 	
 	public NotGate() {
 		emitters = new Emitter[2];
+		//Criando objeto da classe NandGate
 		nandgate = new NandGate();
 	}
 
@@ -17,8 +18,10 @@ public class NotGate extends Gate {
 
 	@Override
 	public boolean read() {
+		//Conectando as duas saidas do nandgate em uma porta Nand no emmitters
 		nandgate.connect(0, emitters[0]);
 		nandgate.connect(1, emitters[0]);
+		//Retornando o objeto nand ja setado como Not
 		return nandgate.read();
 	}
 }
