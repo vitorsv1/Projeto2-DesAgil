@@ -1,4 +1,4 @@
-package br.pro.hashi.ensino.desagil.rafaelogic.view;
+	package br.pro.hashi.ensino.desagil.rafaelogic.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,7 +16,7 @@ public class View extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	
 	private JComboBox<Gate> menu;
-	private LogicGateView logicGateView;
+	private LogicPortView logicGateView;
 
 	public View(LinkedList<Gate> model) {
 
@@ -31,7 +31,7 @@ public class View extends JPanel implements ActionListener {
 
 		add(menu);
 
-		addLogicGateView(0);
+		addLogicPortView(0);
 
 		// Usa Action Listner para a janela reagir a mudanças no menu
 		menu.addActionListener(this);
@@ -40,8 +40,8 @@ public class View extends JPanel implements ActionListener {
 	// Adiciona o subpainel de um gate a este painel.
 	private void addGateView(int index) {
 		Gate gate = menu.getItemAt(index);
-		logicPortView = new LogicPortView(gate);
-		add(logicPortView);
+		logicGateView = new LogicPortView(gate);
+		add(logicGateView);
 	}
 
 	// Troca a interface do gate ja presente
