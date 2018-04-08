@@ -5,6 +5,7 @@ public class AndGate extends Gate{
 	private NotGate not;
 	
 	public AndGate(){
+		super("AND");
 		//criando nand e not dentro do and.
 		nand = new NandGate();
 		not = new NotGate();

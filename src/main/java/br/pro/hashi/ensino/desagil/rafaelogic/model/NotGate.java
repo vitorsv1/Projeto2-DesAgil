@@ -4,6 +4,7 @@ public class NotGate extends Gate {
 	private NandGate nandgate;
 	
 	public NotGate() {
+		super("NOT");
 		//Criando objeto da classe NandGate
 		nandgate = new NandGate();
 	}

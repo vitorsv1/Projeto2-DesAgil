@@ -31,7 +31,7 @@ public class View extends JPanel implements ActionListener {
 
 		add(menu);
 
-		addLogicPortView(0);
+		//addLogicPortView(0);
 
 		// Usa Action Listner para a janela reagir a mudanças no menu
 		menu.addActionListener(this);
