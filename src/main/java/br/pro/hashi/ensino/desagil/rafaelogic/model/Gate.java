@@ -13,6 +13,8 @@ public abstract class Gate implements Emitter, Receiver {
 	public String toString() {
 			return name;
 	}
+	
+	//Função que retorna o tamanho do Gate
 	public int getSize() {
 		return size;
 	}

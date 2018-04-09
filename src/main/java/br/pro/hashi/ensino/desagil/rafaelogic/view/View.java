@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
 
+
+
 import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -29,6 +31,7 @@ public class View extends JPanel implements ActionListener {
 		//Layout da janela
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
+		//Adicionando menu
 		add(menu);
 
 		addGateView(0);

@@ -20,7 +20,7 @@ public class Main {
 			@Override
 			public void run() {
 
-				// Constroi Modelo
+				// Constroi o LinkedList com as gates
 				LinkedList<Gate> model = new LinkedList<>();
 				model.add(new AndGate());
 				model.add(new NandGate());
