@@ -31,9 +31,9 @@ public class View extends JPanel implements ActionListener {
 
 		add(menu);
 
-		//addLogicPortView(0);
+		addGateView(0);
 
-		// Usa Action Listner para a janela reagir a mudanças no menu
+		// Usa Action Listner para a janela reagir a mudanï¿½as no menu
 		menu.addActionListener(this);
 	}
 
@@ -50,7 +50,7 @@ public class View extends JPanel implements ActionListener {
 		remove(logicGateView);
 		int index = menu.getSelectedIndex();
 		addGateView(index);
-
+		// Linha para evitar bugs grÃ¡ficos
 		((JFrame) SwingUtilities.getRoot(this)).pack();
 	}
 }

@@ -5,7 +5,7 @@ public class AndGate extends Gate{
 	private NotGate not;
 	
 	public AndGate(){
-		super("AND");
+		super("AND",1);
 		//criando nand e not dentro do and.
 		nand = new NandGate();
 		not = new NotGate();
@@ -21,7 +21,7 @@ public class AndGate extends Gate{
 	
 	@Override
 	public boolean read(){
-		//lendo a saída do not.
+		//lendo a saï¿½da do not.
 		return not.read();
 	}
 }

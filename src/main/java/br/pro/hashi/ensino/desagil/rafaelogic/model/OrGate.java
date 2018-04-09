@@ -6,7 +6,7 @@ public class OrGate extends Gate{
 	private NotGate not2;
 	
 	public OrGate(){
-		super("OR");
+		super("OR",1);
 		//Criando Nand e Nots dentro do Or
 		nand = new NandGate();
 		not1 = new NotGate();
@@ -31,7 +31,7 @@ public class OrGate extends Gate{
 	
 	@Override
 	public boolean read(){
-		//A saída do Or é a mesma saída do nand
+		//A saï¿½da do Or ï¿½ a mesma saï¿½da do nand
 		return nand.read();
 	}
 }
