@@ -16,7 +16,6 @@ import br.pro.hashi.ensino.desagil.rafaelogic.model.Gate;
 
 public class View extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
-	
 	private JComboBox<Gate> menu;
 	private LogicPortView logicGateView;
 

@@ -2,7 +2,6 @@ package br.pro.hashi.ensino.desagil.rafaelogic.model;
 
 public abstract class Gate implements Emitter, Receiver {
 	private String name;
-
 	private int size;
 	
 	protected Gate(String name,int size){
@@ -14,7 +13,7 @@ public abstract class Gate implements Emitter, Receiver {
 			return name;
 	}
 	
-	//Função que retorna o tamanho do Gate
+	//Funï¿½ï¿½o que retorna o tamanho do Gate
 	public int getSize() {
 		return size;
 	}

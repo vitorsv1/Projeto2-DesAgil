@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
+
 import br.pro.hashi.ensino.desagil.rafaelogic.model.Gate;
 import br.pro.hashi.ensino.desagil.rafaelogic.model.Source;
 
@@ -23,7 +24,7 @@ public class LogicPortView extends JPanel implements ActionListener{
 	public LogicPortView(Gate gate){
 		this.gate = gate;
 		
-		//Criando 3 CHeckLists
+		//Criando 3 CheckLists
 		checkIn1 = new JCheckBox();
 		checkIn2 = new JCheckBox();
 		checkOut = new JCheckBox();
@@ -51,11 +52,11 @@ public class LogicPortView extends JPanel implements ActionListener{
 		add(saidaLabel);
 		add(checkOut);
 		
-		//Aplicando os metódos do ActionListener para responder ao usuário
+		//Aplicando os metï¿½dos do ActionListener para responder ao usuï¿½rio
 		checkIn1.addActionListener(this);
 		checkIn2.addActionListener(this);
 		
-		//Definir o checkbot de resultado como não responsivo ao usuário
+		//Definir o checkbot de resultado como nï¿½o responsivo ao usuï¿½rio
 		checkOut.setEnabled(false);
 		
 		update();
@@ -92,10 +93,16 @@ public class LogicPortView extends JPanel implements ActionListener{
 		}
 		
 		//Conectando os sources criados de acordo com os pinos
-		gate.connect(1, source2);
-		gate.connect(0, source1);
+		if(gate.getSize() == 0){
+			gate.connect(0, source1);
+		}
 		
-		//Gerando o resultado da conexão
+		if(gate.getSize() == 1){
+			gate.connect(1, source2);
+			gate.connect(0, source1);
+		}
+
+		//Gerando o resultado da conexï¿½o
 		boolean result = gate.read();
 		
 		//Definindo a saida do resultad
