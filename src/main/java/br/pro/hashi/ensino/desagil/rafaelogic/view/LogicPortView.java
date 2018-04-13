@@ -31,7 +31,7 @@ public class LogicPortView extends Painel implements ActionListener, MouseListen
 	private Image image;
 	
 	public LogicPortView(Gate gate){
-		super(245,300);
+		super(245,250);
 		
 		this.gate = gate;
 		
@@ -46,12 +46,9 @@ public class LogicPortView extends Painel implements ActionListener, MouseListen
 		add(entradaLabel, 10, 10, 75, 25);
 		add(saidaLabel, 10, 140, 150, 25);
 		add(checkIn1, 10, 45, 75, 25);
-		add(checkIn2, 10, 165, 150, 25);
+		add(checkIn2, 10, 175, 150, 25);
 		
-		add(checkOut, 10, 265, 75, 25); // O checkout vai ser o led, entao saira daqui
-
-		
-		
+				
 		//Caso o Gate seja tamanho 2
 		if(gate.getSize() == 1){
 			add(entradaLabel);
@@ -71,11 +68,15 @@ public class LogicPortView extends Painel implements ActionListener, MouseListen
 		checkIn1.addActionListener(this);
 		checkIn2.addActionListener(this);
 		
-		//Definir o checkbot de resultado como nao responsivo ao usuario
-		//checkOut.setEnabled(false);
-		
 		update();
 		
+		color = Color.BLACK;
+		
+		String path = "/" + gate.toString() + ".png";
+		URL url = getClass().getResource(path);
+		image = new ImageIcon(url).getImage();
+		
+		addMouseListener(this);
 	}
 	
 	private void update(){
@@ -172,7 +173,7 @@ public class LogicPortView extends Painel implements ActionListener, MouseListen
 
 		// Desenha retangulo (mudar para circulo)
 		g.setColor(color);
-		g.fillOval(195, 80, 40, 40);
+		g.fillOval(195, 80, 30, 30);
 
 		getToolkit().sync();
     }
