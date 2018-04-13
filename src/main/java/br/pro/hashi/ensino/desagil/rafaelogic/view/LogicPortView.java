@@ -62,11 +62,11 @@ public class LogicPortView extends Painel implements ActionListener, MouseListen
 		add(saidaLabel);
 		add(checkOut);
 		
-		//Aplicando os met�dos do ActionListener para responder ao usu�rio
+		//Aplicando os metodos do ActionListener para responder ao usuario
 		checkIn1.addActionListener(this);
 		checkIn2.addActionListener(this);
 		
-		//Definir o checkbot de resultado como n�o responsivo ao usu�rio
+		//Definir o checkbot de resultado como nao responsivo ao usuario
 		checkOut.setEnabled(false);
 		
 		update();
@@ -112,10 +112,10 @@ public class LogicPortView extends Painel implements ActionListener, MouseListen
 			gate.connect(0, source1);
 		}
 
-		//Gerando o resultado da conex�o
+		//Gerando o resultado da conexao
 		boolean result = gate.read();
 		
-		//Definindo a saida do resultad
+		//Definindo a saida do resultado
 		checkOut.setSelected(result);
 		
 	}
