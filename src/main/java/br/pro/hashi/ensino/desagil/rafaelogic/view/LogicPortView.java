@@ -43,10 +43,10 @@ public class LogicPortView extends Painel implements ActionListener, MouseListen
 		JLabel entradaLabel = new JLabel("Entrada");
 		JLabel saidaLabel = new JLabel("Saida");
 		
-		add(entradaLabel, 10, 10, 75, 25);
-		add(saidaLabel, 10, 140, 150, 25);
-		add(checkIn1, 10, 45, 75, 25);
-		add(checkIn2, 10, 175, 150, 25);
+		add(entradaLabel, 10, 40, 75, 25);
+		add(saidaLabel, 10, 107, 150, 25);
+		add(checkIn1, 10, 65, 20, 20);
+		add(checkIn2, 10, 130, 20, 20);
 		
 				
 		//Caso o Gate seja tamanho 2
@@ -169,11 +169,11 @@ public class LogicPortView extends Painel implements ActionListener, MouseListen
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
-		g.drawImage(image, 10, 80, 175, 175, null);
+		g.drawImage(image, 40, 35, 165, 145, null);
 
 		// Desenha retangulo (mudar para circulo)
 		g.setColor(color);
-		g.fillOval(195, 80, 30, 30);
+		g.fillOval(200, 93, 25, 25);
 
 		getToolkit().sync();
     }
