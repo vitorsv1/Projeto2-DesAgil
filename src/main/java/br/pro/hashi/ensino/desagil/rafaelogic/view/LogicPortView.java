@@ -26,7 +26,6 @@ public class LogicPortView extends Painel implements ActionListener, MouseListen
 	private Gate gate;
 	private JCheckBox checkIn1;
 	private JCheckBox checkIn2;
-	private JCheckBox checkOut;
 	
 	private Color color;
 	private Image image;
@@ -39,7 +38,6 @@ public class LogicPortView extends Painel implements ActionListener, MouseListen
 		//Criando 3 CheckLists
 		checkIn1 = new JCheckBox();
 		checkIn2 = new JCheckBox();
-		checkOut = new JCheckBox();
 		
 		//Definindo nomes dos labels que definiram os checklist
 		JLabel entradaLabel = new JLabel("Entrada");
@@ -68,14 +66,13 @@ public class LogicPortView extends Painel implements ActionListener, MouseListen
 		
 		//Adicionando a janela os labels de saida e o checklist de saida
 		add(saidaLabel);
-		add(checkOut);
 		
 		//Aplicando os metodos do ActionListener para responder ao usuario
 		checkIn1.addActionListener(this);
 		checkIn2.addActionListener(this);
 		
 		//Definir o checkbot de resultado como nao responsivo ao usuario
-		checkOut.setEnabled(false);
+		//checkOut.setEnabled(false);
 		
 		update();
 		
@@ -124,7 +121,7 @@ public class LogicPortView extends Painel implements ActionListener, MouseListen
 		boolean result = gate.read();
 		
 		//Definindo a saida do resultado
-		checkOut.setSelected(result);
+		//checkOut.setSelected(result);
 		
 	}
 	
