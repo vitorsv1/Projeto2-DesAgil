@@ -1,8 +1,16 @@
 package br.pro.hashi.ensino.desagil.rafaelogic.view;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.net.URL;
 
+import javax.swing.ImageIcon;
+import javax.swing.JColorChooser;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.BoxLayout;
@@ -11,17 +19,21 @@ import javax.swing.JCheckBox;
 import br.pro.hashi.ensino.desagil.rafaelogic.model.Gate;
 import br.pro.hashi.ensino.desagil.rafaelogic.model.Source;
 
-public class LogicPortView extends JPanel implements ActionListener{
+public class LogicPortView extends Painel implements ActionListener, MouseListener{
 
 	private static final long serialVersionUID = 1L;
 	
 	private Gate gate;
-	
 	private JCheckBox checkIn1;
 	private JCheckBox checkIn2;
 	private JCheckBox checkOut;
 	
+	private Color color;
+	private Image image;
+	
 	public LogicPortView(Gate gate){
+		super(245,300);
+		
 		this.gate = gate;
 		
 		//Criando 3 CheckLists
@@ -33,8 +45,6 @@ public class LogicPortView extends JPanel implements ActionListener{
 		JLabel entradaLabel = new JLabel("Entrada");
 		JLabel saidaLabel = new JLabel("Saida");
 		
-		//Setando o layout da janela
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 		//Caso o Gate seja tamanho 2
 		if(gate.getSize() == 1){
@@ -114,4 +124,51 @@ public class LogicPortView extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent event) {
 		update();
 	}
+	
+	@Override
+	public void mouseClicked(MouseEvent event) {
+
+		// Ponto clicado
+		int x = event.getX();
+		int y = event.getY();
+
+		// Se o clique for no led (mudar as coordenadas)
+		if(x >= 195 && x < 235 && y >= 80 && y < 255) {
+
+			// abrir o seletor de cor
+			color = JColorChooser.showDialog(this, null, color);
+
+			// pinta a tela
+			repaint();
+		}
+	}
+	
+	@Override
+	public void mousePressed(MouseEvent event) {
+	}
+	
+	@Override
+	public void mouseReleased(MouseEvent event) {
+	}
+	
+	@Override
+	public void mouseEntered(MouseEvent event) {
+	}
+	
+	@Override
+	public void mouseExited(MouseEvent event) {
+	}
+
+	@Override
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+
+		g.drawImage(image, 10, 80, 175, 175, null);
+
+		// Desenha retangulo (mudar para circulo)
+		g.setColor(color);
+		g.fillRect(195, 80, 40, 175);
+
+		getToolkit().sync();
+    }
 }
