@@ -11,6 +11,7 @@ import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
+import javax.swing.JLabel;
 import javax.swing.JCheckBox;
 
 import br.pro.hashi.ensino.desagil.rafaelogic.model.Gate;
@@ -32,30 +33,33 @@ public class LogicPortView extends Painel implements ActionListener, MouseListen
 		
 		this.gate = gate;
 		
-		//Criando 2 CheckBoxes
+		//Criando 3 CheckLists
 		checkIn1 = new JCheckBox();
 		checkIn2 = new JCheckBox();
 		
-		
+		//Definindo nomes dos labels que definiram os checklist
+		JLabel entradaLabel1 = new JLabel("Porta 1");
+		JLabel entradaLabel2 = new JLabel("Porta 2");
 				
 		//Caso o Gate seja tamanho 2
 		if(gate.getSize() == 1){
+			add(entradaLabel1, 10, 40, 75, 25);
+			add(entradaLabel2, 10, 107, 150, 25);
 			add(checkIn1, 10, 65, 20, 20);
 			add(checkIn2, 10, 130, 20, 20);
 		}
+		
 		//Caso o Gate seja tamanho 1
 		if(gate.getSize() == 0){
-			add(checkIn1, 10, 95, 20, 20);
+			add(entradaLabel1, 10, 72, 75, 25);
+			add(checkIn1, 10, 97, 20, 20);
 		}
-		
-		
+				
 		//Aplicando os metodos do ActionListener para responder ao usuario
 		checkIn1.addActionListener(this);
 		checkIn2.addActionListener(this);
 		
 		update();
-		
-		color = Color.red;
 		
 		String path = "/" + gate.toString() + ".png";
 		URL url = getClass().getResource(path);
@@ -70,7 +74,7 @@ public class LogicPortView extends Painel implements ActionListener, MouseListen
 		Source source1 = new Source();
 		Source source2 = new Source();
 		
-		//Definindo pino1
+		//Defidindo pino1
 		boolean pino1 = checkIn1.isSelected();
 		
 		//Ver se o pino um foi trocado
@@ -103,6 +107,19 @@ public class LogicPortView extends Painel implements ActionListener, MouseListen
 			gate.connect(0, source1);
 		}
 
+		//Gerando o resultado da conexao
+		boolean result = gate.read();
+		
+		//Mudando a cor do led de acordo com a saida
+		if (result == true){
+			color = Color.RED;
+			repaint();
+		}
+		
+		if (result == false){
+			color = Color.BLACK;
+			repaint();
+		}
 	}
 	
 	@Override
@@ -116,9 +133,11 @@ public class LogicPortView extends Painel implements ActionListener, MouseListen
 		// Ponto clicado
 		int x = event.getX();
 		int y = event.getY();
-
-		// Se o clique for no led (mudar as coordenadas)
-		if(x >= 195 && x < 235 && y >= 80 && y < 255) {
+		double dist = Math.sqrt(Math.pow(212-x, 2)+Math.pow(105-y, 2));
+		
+		// Se o clique for no led (de acordo com calculo da distancia do 
+		//clique ao centro da circunferencia)
+		if(dist <= 12 && color == Color.RED) {
 
 			// abrir o seletor de cor
 			color = JColorChooser.showDialog(this, null, color);
@@ -149,19 +168,9 @@ public class LogicPortView extends Painel implements ActionListener, MouseListen
 		super.paintComponent(g);
 
 		g.drawImage(image, 40, 35, 165, 145, null);
+		g.setColor(color);
+		g.fillOval(200, 93, 24, 24);
 
-		// Desenha circulo
-		//Pinta a saída de acordo com o seu valor
-		if(gate.read() == true){
-			g.setColor(color);
-			g.fillOval(200, 93, 25, 25);
-		}
-		else if (gate.read() == false){
-			g.setColor(Color.black);
-			g.fillOval(200, 93, 25, 25);
-		};
-
-		repaint();
 		getToolkit().sync();
     }
 }
