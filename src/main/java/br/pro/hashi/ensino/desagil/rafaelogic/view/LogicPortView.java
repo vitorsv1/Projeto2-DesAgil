@@ -11,9 +11,6 @@ import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 
 import br.pro.hashi.ensino.desagil.rafaelogic.model.Gate;
@@ -35,34 +32,22 @@ public class LogicPortView extends Painel implements ActionListener, MouseListen
 		
 		this.gate = gate;
 		
-		//Criando 3 CheckLists
+		//Criando 2 CheckBoxes
 		checkIn1 = new JCheckBox();
 		checkIn2 = new JCheckBox();
 		
-		//Definindo nomes dos labels que definiram os checklist
-		JLabel entradaLabel = new JLabel("Entrada");
-		JLabel saidaLabel = new JLabel("Saida");
-		
-		add(entradaLabel, 10, 40, 75, 25);
-		add(saidaLabel, 10, 107, 150, 25);
-		add(checkIn1, 10, 65, 20, 20);
-		add(checkIn2, 10, 130, 20, 20);
 		
 				
 		//Caso o Gate seja tamanho 2
 		if(gate.getSize() == 1){
-			add(entradaLabel);
-			add(checkIn1);
-			add(checkIn2);
+			add(checkIn1, 10, 65, 20, 20);
+			add(checkIn2, 10, 130, 20, 20);
 		}
 		//Caso o Gate seja tamanho 1
 		if(gate.getSize() == 0){
-			add(entradaLabel);
-			add(checkIn1);
+			add(checkIn1, 10, 95, 20, 20);
 		}
 		
-		//Adicionando a janela os labels de saida e o checklist de saida
-		add(saidaLabel);
 		
 		//Aplicando os metodos do ActionListener para responder ao usuario
 		checkIn1.addActionListener(this);
@@ -70,7 +55,7 @@ public class LogicPortView extends Painel implements ActionListener, MouseListen
 		
 		update();
 		
-		color = Color.BLACK;
+		color = Color.red;
 		
 		String path = "/" + gate.toString() + ".png";
 		URL url = getClass().getResource(path);
@@ -85,7 +70,7 @@ public class LogicPortView extends Painel implements ActionListener, MouseListen
 		Source source1 = new Source();
 		Source source2 = new Source();
 		
-		//Defidindo pino1
+		//Definindo pino1
 		boolean pino1 = checkIn1.isSelected();
 		
 		//Ver se o pino um foi trocado
@@ -118,12 +103,6 @@ public class LogicPortView extends Painel implements ActionListener, MouseListen
 			gate.connect(0, source1);
 		}
 
-		//Gerando o resultado da conexao
-		boolean result = gate.read();
-		
-		//Definindo a saida do resultado
-		//checkOut.setSelected(result);
-		
 	}
 	
 	@Override
@@ -171,10 +150,18 @@ public class LogicPortView extends Painel implements ActionListener, MouseListen
 
 		g.drawImage(image, 40, 35, 165, 145, null);
 
-		// Desenha retangulo (mudar para circulo)
-		g.setColor(color);
-		g.fillOval(200, 93, 25, 25);
+		// Desenha circulo
+		//Pinta a saída de acordo com o seu valor
+		if(gate.read() == true){
+			g.setColor(color);
+			g.fillOval(200, 93, 25, 25);
+		}
+		else if (gate.read() == false){
+			g.setColor(Color.black);
+			g.fillOval(200, 93, 25, 25);
+		};
 
+		repaint();
 		getToolkit().sync();
     }
 }
