@@ -27,5 +27,3 @@ Projeto 2 de Desenvolvimento Colaborativo Ágil
 
 -Resíduos de template: quando o código foi escrito a partir da modificação de outro e sobraram pedaços que só fazem sentido na versão original.
 
-### Link Rúbrica:
- - https://ensino.hashi.pro.br/desagil/projeto/raw/projeto3.pdf
